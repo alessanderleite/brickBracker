@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private boolean play = false;
@@ -51,27 +51,48 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		
 		// the ball
 		g.setColor(Color.yellow);
-		g.fillRect(ballposX, ballposX, 20, 20);
+		g.fillOval(ballposX, ballposY, 20, 20);
 		
-	
+		g.dispose();
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		timer.start();
+		repaint();
 		
 	}
 	@Override
-	public void keyTyped(KeyEvent arg0) {}
+	public void keyTyped(KeyEvent e) {}
 	@Override
-	public void keyPressed(KeyEvent arg0) {}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent e) {}
 	
-		
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			if(playerX >= 600) {
+				playerX = 600;
+			} else {
+				moveRight();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			if(playerX < 10) {
+				playerX = 10;
+			} else {
+				moveLeft();
+			}
+		}
 	}
-
+	public void moveRight() {
+		play = true;
+		playerX+=20;
+	}
+	
+	public void moveLeft() {
+		play = true;
+		playerX-=20;
+	}
 
 
 }
