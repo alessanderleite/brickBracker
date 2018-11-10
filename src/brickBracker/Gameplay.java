@@ -53,7 +53,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		// the ball
 		g.setColor(Color.yellow);
 		g.fillOval(ballposX, ballposY, 20, 20);
-		
+		// stop ==========> 28:23
 		g.dispose();
 	}
 	
